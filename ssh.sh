@@ -4,7 +4,7 @@
 # ==================================================
 
 clear
-echo -e "\033[1;36m🔐 Arain Nodes - Secure SSH & MOTD Setup\033[0m"
+echo -e "\033[1;36m🔐 Arain Cloud - Secure SSH & MOTD Setup\033[0m"
 echo -e "\033[1;37m---------------------------------------\033[0m"
 sleep 1
 
@@ -81,7 +81,7 @@ echo -e "██║  ██║██║  ██║██║  ██║██║�
 echo -e "╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝╚═╝  ╚═══╝"
 echo -e "${RESET}"
 
-echo -e "${GREEN} Welcome to Arain Nodes Datacenter 🚀 ${RESET}\n"
+echo -e "${GREEN} Welcome to Arain Cloud Datacenter 🚀 ${RESET}\n"
 
 echo -e "${BLUE}📊 System Information:${RESET} ($(date))\n"
 printf "  ${YELLOW}CPU Load     :${RESET} %s\n" "$LOAD"
@@ -92,8 +92,8 @@ printf "  ${YELLOW}Users Logged :${RESET} %s\n" "$USERS"
 printf "  ${YELLOW}IP Address   :${RESET} %s\n" "$IP"
 printf "  ${YELLOW}Uptime       :${RESET} %s\n\n" "$UPTIME"
 
-echo -e "${CYAN}Support: support@arainnodes.xyz${RESET}"
-echo -e "Website: ${BLUE}arainnodes.xyz${RESET}"
+echo -e "${CYAN}Support: support@arain.cloud${RESET}"
+echo -e "Website: ${BLUE}arain.cloud${RESET}"
 echo -e "${GREEN}Power • Performance • Stability 💪${RESET}"
 EOF
 
@@ -106,10 +106,10 @@ sleep 1
 # FINAL
 # ===============================
 clear
-echo -e "\033[1;32m🎉 Arain Nodes SSH & MOTD Setup Completed!\033[0m"
+echo -e "\033[1;32m🎉 Arain Cloud SSH & MOTD Setup Completed!\033[0m"
 echo -e "\033[1;37m📌 Reconnect SSH to see the new MOTD.\033[0m"
 
 echo -e "\n\033[1;33m🔑 Please set ROOT password below 👇\033[0m"
 sudo passwd root
 
-echo -e "\n\033[1;36m✨ Welcome to Arain Nodes – Enjoy your server! 🚀\033[0m"
+echo -e "\n\033[1;36m✨ Welcome to Arain Cloud – Enjoy your server! 🚀\033[0m"
