@@ -95,8 +95,7 @@ printf "  ${YELLOW}Uptime       :${RESET} %s\n\n" "$UPTIME"
 echo -e "${CYAN}Support: support@galaxyhost.site${RESET}"
 echo -e "Website: ${BLUE}galaxyhost.site${RESET}"
 echo -e "${GREEN}Power • Performance • Stability 💪${RESET}"
-echo -e ""
-echo -e "${YELLOW}\e[1mRespected Founders:${RESET} ${GREEN}\e[1mSmarty & Shubham${RESET}"
+echo -e "${YELLOW}\e[1m⚡ Made By Galaxy Host Team ⚡${RESET}"
 EOF
 
 chmod +x /etc/update-motd.d/00-galaxyhost
