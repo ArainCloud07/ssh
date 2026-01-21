@@ -4,7 +4,7 @@
 # ==================================================
 
 clear
-echo -e "\033[1;36m🔐 Arain Cloud - Secure SSH & MOTD Setup\033[0m"
+echo -e "\033[1;36m🔐 Galaxy Host - Secure SSH & MOTD Setup\033[0m"
 echo -e "\033[1;37m---------------------------------------\033[0m"
 sleep 1
 
@@ -49,7 +49,7 @@ echo -e "\033[1;34m▶ Installing Advanced MOTD...\033[0m"
 chmod -x /etc/update-motd.d/* 2>/dev/null
 
 # Create Arain Nodes MOTD
-cat << 'EOF' > /etc/update-motd.d/00-arainnodes
+cat << 'EOF' > /etc/update-motd.d/00-galaxyhost
 #!/bin/bash
 
 # Colors
@@ -73,15 +73,15 @@ IP=$(hostname -I | awk '{print $1}')
 UPTIME=$(uptime -p | sed 's/up //')
 
 echo -e "${red}"
-echo -e " █████╗ ██████╗  █████╗ ██╗███╗   ██╗"
-echo -e "██╔══██╗██╔══██╗██╔══██╗██║████╗  ██║"
-echo -e "███████║██████╔╝███████║██║██╔██╗ ██║"
-echo -e "██╔══██║██╔══██╗██╔══██║██║██║╚██╗██║"
-echo -e "██║  ██║██║  ██║██║  ██║██║██║ ╚████║"
-echo -e "╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝╚═╝  ╚═══╝"
+echo -e " ██████╗  █████╗ ██╗      █████╗ ██╗  ██╗██╗   ██╗"
+echo -e "██╔════╝ ██╔══██╗██║     ██╔══██╗╚██╗██╔╝╚██╗ ██╔╝"
+echo -e "██║  ███╗███████║██║     ███████║ ╚███╔╝  ╚████╔╝ "
+echo -e "██║   ██║██╔══██║██║     ██╔══██║ ██╔██╗   ╚██╔╝  "
+echo -e "╚██████╔╝██║  ██║███████╗██║  ██║██╔╝ ██╗   ██║   "
+echo -e " ╚═════╝ ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝   ╚═╝   "
 echo -e "${RESET}"
 
-echo -e "${GREEN} Welcome to Arain Cloud Datacenter 🚀 ${RESET}\n"
+echo -e "${GREEN} Welcome to Galaxy Host Datacenter 🚀 ${RESET}\n"
 
 echo -e "${BLUE}📊 System Information:${RESET} ($(date))\n"
 printf "  ${YELLOW}CPU Load     :${RESET} %s\n" "$LOAD"
@@ -92,12 +92,12 @@ printf "  ${YELLOW}Users Logged :${RESET} %s\n" "$USERS"
 printf "  ${YELLOW}IP Address   :${RESET} %s\n" "$IP"
 printf "  ${YELLOW}Uptime       :${RESET} %s\n\n" "$UPTIME"
 
-echo -e "${CYAN}Support: support@arain.cloud${RESET}"
-echo -e "Website: ${BLUE}arain.cloud${RESET}"
+echo -e "${CYAN}Support: support@galaxyhost.site${RESET}"
+echo -e "Website: ${BLUE}galaxyhost.site${RESET}"
 echo -e "${GREEN}Power • Performance • Stability 💪${RESET}"
 EOF
 
-chmod +x /etc/update-motd.d/00-arainnodes
+chmod +x /etc/update-motd.d/00-galaxyhost
 
 echo -e "\033[1;32m✔ Advanced MOTD Installed Successfully!\033[0m"
 sleep 1
@@ -106,10 +106,10 @@ sleep 1
 # FINAL
 # ===============================
 clear
-echo -e "\033[1;32m🎉 Arain Cloud SSH & MOTD Setup Completed!\033[0m"
+echo -e "\033[1;32m🎉 Galaxy Host SSH & MOTD Setup Completed!\033[0m"
 echo -e "\033[1;37m📌 Reconnect SSH to see the new MOTD.\033[0m"
 
 echo -e "\n\033[1;33m🔑 Please set ROOT password below 👇\033[0m"
 sudo passwd root
 
-echo -e "\n\033[1;36m✨ Welcome to Arain Cloud – Enjoy your server! 🚀\033[0m"
+echo -e "\n\033[1;36m✨ Welcome to Galaxy Host – Enjoy your server! 🚀\033[0m"
