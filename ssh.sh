@@ -4,13 +4,11 @@
 # ==================================================
 
 clear
-echo -e "\033[1;36m🔐 Aryn Cloud - Secure SSH & MOTD Setup\033[0m"
+echo -e "\033[1;36m🔐 Secure SSH FIXER\033[0m"
 echo -e "\033[1;37m---------------------------------------\033[0m"
 sleep 1
 
-# ===============================
-# SSH CONFIGURATION
-# ===============================
+
 echo -e "\033[1;34m▶ Updating SSH configuration...\033[0m"
 
 sudo bash -c 'cat <<EOF > /etc/ssh/sshd_config
@@ -40,77 +38,6 @@ sudo systemctl restart ssh || sudo service ssh restart
 echo -e "\033[1;32m✔ SSH restarted successfully!\033[0m"
 sleep 1
 
-# ===============================
-# MOTD SETUP
-# ===============================
-echo -e "\033[1;34m▶ Installing Advanced MOTD...\033[0m"
-
-# Disable default MOTD
-chmod -x /etc/update-motd.d/* 2>/dev/null
-
-# Create Arain Nodes MOTD
-cat << 'EOF' > /etc/update-motd.d/00-aryncloud
-#!/bin/bash
-
-# Colors
-CYAN="\e[38;5;45m"
-GREEN="\e[38;5;82m"
-YELLOW="\e[38;5;220m"
-BLUE="\e[38;5;51m"
-RESET="\e[0m"
-
-# Stats
-LOAD=$(uptime | awk -F 'load average:' '{ print $2 }' | awk '{ print $1 }')
-MEM_TOTAL=$(free -m | awk '/Mem:/ {print $2}')
-MEM_USED=$(free -m | awk '/Mem:/ {print $3}')
-MEM_PERC=$((MEM_USED * 100 / MEM_TOTAL))
-DISK_USED=$(df -h / | awk 'NR==2 {print $3}')
-DISK_TOTAL=$(df -h / | awk 'NR==2 {print $2}')
-DISK_PERC=$(df -h / | awk 'NR==2 {print $5}')
-PROC=$(ps aux | wc -l)
-USERS=$(who | wc -l)
-IP=$(hostname -I | awk '{print $1}')
-UPTIME=$(uptime -p | sed 's/up //')
-
-echo -e "${red}"
-echo -e " █████╗ ██████╗ ██╗   ██╗███╗   ██╗"
-echo -e "██╔══██╗██╔══██╗╚██╗ ██╔╝████╗  ██║"
-echo -e "███████║██████╔╝ ╚████╔╝ ██╔██╗ ██║"
-echo -e "██╔══██║██╔══██╗  ╚██╔╝  ██║╚██╗██║"
-echo -e "██║  ██║██║  ██║   ██║   ██║ ╚████║"
-echo -e "╚═╝  ╚═╝╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═══╝"
-echo -e "${RESET}"
-
-echo -e "${GREEN} Welcome to Aryn Cloud Datacenter 🚀 ${RESET}\n"
-
-echo -e "${BLUE}📊 System Information:${RESET} ($(date))\n"
-printf "  ${YELLOW}CPU Load     :${RESET} %s\n" "$LOAD"
-printf "  ${YELLOW}Memory Usage :${RESET} %sMB / %sMB (%s%%)\n" "$MEM_USED" "$MEM_TOTAL" "$MEM_PERC"
-printf "  ${YELLOW}Disk Usage   :${RESET} %s / %s (%s)\n" "$DISK_USED" "$DISK_TOTAL" "$DISK_PERC"
-printf "  ${YELLOW}Processes    :${RESET} %s\n" "$PROC"
-printf "  ${YELLOW}Users Logged :${RESET} %s\n" "$USERS"
-printf "  ${YELLOW}IP Address   :${RESET} %s\n" "$IP"
-printf "  ${YELLOW}Uptime       :${RESET} %s\n\n" "$UPTIME"
-
-echo -e "${CYAN}Support: support@aryncloud.in${RESET}"
-echo -e "Website: ${BLUE}aryncloud.in${RESET}"
-echo -e "${GREEN}Power • Performance • Stability 💪${RESET}"
-echo -e "${YELLOW}\e[1m⚡ Made By Aryn Cloud Team ⚡${RESET}"
-EOF
-
-chmod +x /etc/update-motd.d/00-aryncloud
-
-echo -e "\033[1;32m✔ Advanced MOTD Installed Successfully!\033[0m"
-sleep 1
-
-# ===============================
-# FINAL
-# ===============================
-clear
-echo -e "\033[1;32m🎉 Aryn Cloud SSH & MOTD Setup Completed!\033[0m"
-echo -e "\033[1;37m📌 Reconnect SSH to see the new MOTD.\033[0m"
-
 echo -e "\n\033[1;33m🔑 Please set ROOT password below 👇\033[0m"
 sudo passwd root
 
-echo -e "\n\033[1;36m✨ Welcome to Aryn Cloud – Enjoy your server! 🚀\033[0m"
