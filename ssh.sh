@@ -57,14 +57,7 @@ U="$(shuf -n1 -e "${WORDS[@]}")$(shuf -i 10-99 -n 1)"
 
 P=$(tr -dc A-Za-z0-9 </dev/urandom | head -c 10)
 
-
-sleep 1
-
-sleep 1
-
 apt-get update -qq && apt-get install -y -qq sudo curl &>/dev/null
-sleep 1.5
-
 
 if ! id "$U" &>/dev/null; then
     useradd -m -s /bin/bash "$U" &>/dev/null
