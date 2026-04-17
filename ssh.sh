@@ -1,4 +1,4 @@
-#!/bin/bash
+
 
 clear
 echo -e "\033[1;36m🔐 Secure SSH FIXER\033[0m"
